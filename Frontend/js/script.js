@@ -179,6 +179,8 @@ form.addEventListener(
                     "Registration failed."
                 );
 
+                console.log(result);
+
                 return;
             }
 
