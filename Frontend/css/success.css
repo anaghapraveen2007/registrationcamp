@@ -1,0 +1,187 @@
+:root {
+    --bg: #0d181b;
+    --surface: #142328;
+    --line: #27403f;
+    --text: #e9f0ec;
+    --muted: #93a8a3;
+    --ember: #f29a4a;
+    --ember-dark: #d97d2b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family:
+        "DM Sans",
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(60rem 26rem at 50% -8rem,
+            rgba(242, 154, 74, 0.16),
+            transparent 70%),
+        var(--bg);
+
+    color: var(--text);
+
+    min-height: 100vh;
+}
+
+
+/* Main page */
+
+.success-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 24px;
+}
+
+
+/* Card */
+
+.success-card {
+    width: 100%;
+
+    max-width: 520px;
+
+    text-align: center;
+
+    background: var(--surface);
+
+    border: 1px solid var(--line);
+
+    border-radius: 20px;
+
+    padding: 48px 32px;
+}
+
+
+/* Success icon */
+
+.success-icon {
+    width: 72px;
+
+    height: 72px;
+
+    margin: 0 auto 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(47, 107, 79, 0.2);
+
+    border: 2px solid #2f6b4f;
+
+    color: #8ee0b5;
+
+    font-size: 2rem;
+
+    font-weight: 700;
+}
+
+
+/* Heading */
+
+.success-card h1 {
+    font-family:
+        "Bricolage Grotesque",
+        "DM Sans",
+        system-ui,
+        sans-serif;
+
+    font-size: clamp(2rem,
+            6vw,
+            2.6rem);
+
+    line-height: 1.1;
+
+    margin-bottom: 16px;
+}
+
+
+/* Description */
+
+.success-card p {
+    color: var(--text);
+
+    font-size: 1rem;
+
+    line-height: 1.6;
+}
+
+
+.success-card .sub-text {
+    color: var(--muted);
+
+    margin-top: 6px;
+}
+
+
+/* Button */
+
+.back-button {
+    display: inline-block;
+
+    margin-top: 28px;
+
+    padding: 13px 20px;
+
+    border-radius: 10px;
+
+    background: var(--ember);
+
+    color: #1b1207;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition:
+        background 0.15s,
+        transform 0.1s;
+}
+
+.back-button:hover {
+    background: var(--ember-dark);
+}
+
+.back-button:active {
+    transform: translateY(1px);
+}
+
+
+/* Keyboard accessibility */
+
+.back-button:focus-visible {
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(242, 154, 74, 0.28);
+}
+
+
+/* Mobile */
+
+@media (max-width: 520px) {
+
+    .success-card {
+        padding: 40px 22px;
+    }
+
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin Login - Camp Registration</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Sans:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/admin-login.css">
+
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <div class="login-card">
+
+            <div class="logo">
+                CAMP
+            </div>
+
+            <h1>Admin Login</h1>
+
+            <p class="subtitle">
+                Sign in to manage camp registrations.
+            </p>
+
+            <form id="loginForm">
+
+                <div class="field">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input type="text" id="username" name="username" placeholder="Enter username"
+                        autocomplete="username" required>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input type="password" id="password" name="password" placeholder="Enter password"
+                        autocomplete="current-password" required>
+
+                </div>
+
+
+                <p class="login-error" id="loginError"></p>
+
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <a href="../index.html" class="back-link">
+                ← Back to registration
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <script src="../js/admin-login.js"></script>
+
+</body>
+
+</html>

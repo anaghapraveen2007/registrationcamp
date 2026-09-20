@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin Dashboard - Camp Registration</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Sans:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+
+</head>
+
+<body>
+
+    <header class="admin-header">
+
+        <div>
+
+            <span class="eyebrow">
+                CAMP REGISTRATION
+            </span>
+
+            <h1>
+                Admin Dashboard
+            </h1>
+
+        </div>
+
+
+        <button id="logoutButton" class="logout-button">
+            Logout
+        </button>
+
+    </header>
+
+
+    <main class="dashboard">
+
+        <!-- Statistics -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <span>
+                    Total registrations
+                </span>
+
+                <strong id="totalRegistrations">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    BVoc SD
+                </span>
+
+                <strong id="bvocCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    BCA
+                </span>
+
+                <strong id="bcaCount">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- Registration list -->
+
+        <section class="registrations">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Registrations
+                    </h2>
+
+                    <p>
+                        List of students registered for the camp.
+                    </p>
+
+                </div>
+
+
+                <button id="downloadButton" class="download-button">
+                    Download Excel
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>Student Name</th>
+
+                            <th>Phone</th>
+
+                            <th>Department</th>
+
+                            <th>Year</th>
+
+                            <th>Parent Name</th>
+
+                            <th>Parent Phone</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="registrationTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/admin-dashboard.js"></script>
+
+</body>
+
+</html>

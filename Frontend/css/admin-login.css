@@ -1,0 +1,196 @@
+:root {
+    --bg: #0d181b;
+    --surface: #142328;
+    --field: #0f1c20;
+    --line: #27403f;
+    --text: #e9f0ec;
+    --muted: #93a8a3;
+    --ember: #f29a4a;
+    --ember-dark: #d97d2b;
+    --error: #ff7b72;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family:
+        "DM Sans",
+        system-ui,
+        sans-serif;
+
+    background:
+        radial-gradient(60rem 26rem at 50% -8rem,
+            rgba(242, 154, 74, 0.16),
+            transparent 70%),
+        var(--bg);
+
+    color: var(--text);
+
+    min-height: 100vh;
+}
+
+.login-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.login-card {
+    width: 100%;
+
+    max-width: 420px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--line);
+
+    border-radius: 18px;
+
+    padding: 36px;
+}
+
+.logo {
+    color: var(--ember);
+
+    font-family:
+        "Bricolage Grotesque",
+        sans-serif;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+
+    margin-bottom: 24px;
+}
+
+.login-card h1 {
+    font-family:
+        "Bricolage Grotesque",
+        sans-serif;
+
+    font-size: 2rem;
+
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--muted);
+
+    margin-bottom: 28px;
+}
+
+.field {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-bottom: 18px;
+}
+
+label {
+    font-size: 0.9rem;
+
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border-radius: 10px;
+
+    border: 1px solid var(--line);
+
+    background: var(--field);
+
+    color: var(--text);
+
+    font: inherit;
+}
+
+input::placeholder {
+    color: #5f7773;
+}
+
+input:focus {
+    outline: none;
+
+    border-color: var(--ember);
+
+    box-shadow:
+        0 0 0 3px rgba(242, 154, 74, 0.2);
+}
+
+button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: var(--ember);
+
+    color: #1b1207;
+
+    font: inherit;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--ember-dark);
+}
+
+.login-error {
+    min-height: 20px;
+
+    color: var(--error);
+
+    font-size: 0.85rem;
+
+    margin-bottom: 10px;
+}
+
+.back-link {
+    display: block;
+
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: var(--muted);
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    color: var(--ember);
+}
+
+@media (max-width: 480px) {
+
+    .login-card {
+        padding: 28px 22px;
+    }
+
+}

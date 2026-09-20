@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>College Camp Registration</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Sans:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <main class="wrap">
+
+    <header>
+      <h1>Camp registration</h1>
+
+      <p>
+        Fill in your details and your parent or guardian's contact
+        so we can confirm your spot.
+      </p>
+    </header>
+
+    <form id="regForm" novalidate>
+
+      <!-- Student Details -->
+      <fieldset>
+        <legend>Your details</legend>
+
+        <div class="grid">
+
+          <div class="field full">
+            <label for="fullName">Full name</label>
+
+            <input type="text" id="fullName" name="fullName" placeholder="e.g. Priya Sharma" autocomplete="name"
+              required>
+
+            <span class="error"></span>
+          </div>
+
+
+          <div class="field full">
+            <label for="phone">Phone number</label>
+
+            <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" inputmode="numeric"
+              maxlength="10" pattern="[0-9]{10}" autocomplete="tel" required>
+
+            <span class="error"></span>
+          </div>
+
+
+          <div class="field">
+
+            <label for="department">Department</label>
+
+            <select id="department" name="department" required>
+
+              <option value="" disabled selected>
+                Select department
+              </option>
+
+              <option value="BVoc SD">BVoc SD</option>
+              <option value="BCA">BCA</option>
+
+            </select>
+
+            <span class="error"></span>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="year">Year of study</label>
+
+            <select id="year" name="year" required>
+
+              <option value="" disabled selected>
+                Select year
+              </option>
+
+              <option value="1">1st year</option>
+              <option value="2">2nd year</option>
+              <option value="3">3rd year</option>
+
+            </select>
+
+            <span class="error"></span>
+
+          </div>
+
+        </div>
+      </fieldset>
+
+
+      <!-- Parent / Guardian Details -->
+      <fieldset>
+
+        <legend>Parent or guardian</legend>
+
+        <div class="grid">
+
+          <div class="field full">
+
+            <label for="parentName">
+              Parent's name
+            </label>
+
+            <input type="text" id="parentName" name="parentName" placeholder="e.g. Rajesh Sharma" required>
+
+            <span class="error"></span>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label for="parentPhone">
+              Parent's contact number
+            </label>
+
+            <input type="tel" id="parentPhone" name="parentPhone" placeholder="10-digit mobile number"
+              inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required>
+
+            <span class="hint">
+              We'll call this number only about the camp.
+            </span>
+
+            <span class="error"></span>
+
+          </div>
+
+        </div>
+
+      </fieldset>
+
+
+      <button type="submit">
+        Register for camp
+      </button>
+
+
+      <div class="success" id="success" role="status">
+        You're registered. We'll contact you with camp details soon.
+      </div>
+
+    </form>
+
+  </main>
+
+
+  <!-- External JavaScript -->
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>
