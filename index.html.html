@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>College Camp Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d181b;
+      --surface: #142328;
+      --field: #0f1c20;
+      --line: #27403f;
+      --text: #e9f0ec;
+      --muted: #93a8a3;
+      --ember: #f29a4a;
+      --ember-dark: #d97d2b;
+      --error: #ff7b72;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    body {
+      font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(60rem 26rem at 50% -8rem, rgba(242, 154, 74, 0.16), transparent 70%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 40px 16px 64px;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    header { margin-bottom: 28px; }
+
+    header h1 {
+      font-family: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 6vw, 2.75rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--muted);
+      margin-top: 10px;
+      max-width: 46ch;
+    }
+
+    form {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    fieldset {
+      border: 0;
+      padding: 0;
+      margin: 0 0 28px;
+      min-inline-size: 0;
+    }
+
+    legend {
+      font-family: "Bricolage Grotesque", "DM Sans", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--ember);
+      padding: 0 0 14px;
+      margin-bottom: 4px;
+      width: 100%;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    .field { display: flex; flex-direction: column; gap: 6px; }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    input, select {
+      font: inherit;
+      color: var(--text);
+      background: var(--field);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      width: 100%;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    input::placeholder { color: #5f7773; }
+
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      padding-right: 40px;
+      background-image:
+        linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+        linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+      background-position:
+        calc(100% - 20px) 55%,
+        calc(100% - 14px) 55%;
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+    }
+
+    select:invalid { color: #5f7773; }
+    option { color: var(--text); background: var(--surface); }
+
+    input:hover, select:hover { border-color: #3a5a57; }
+
+    input:focus-visible, select:focus-visible, button:focus-visible {
+      outline: none;
+      border-color: var(--ember);
+      box-shadow: 0 0 0 3px rgba(242, 154, 74, 0.28);
+    }
+
+    .hint { font-size: 0.8rem; color: var(--muted); }
+
+    .error {
+      font-size: 0.8rem;
+      color: var(--error);
+      min-height: 1.1em;
+    }
+
+    .field.invalid input,
+    .field.invalid select { border-color: var(--error); }
+
+    button {
+      font: inherit;
+      font-weight: 600;
+      width: 100%;
+      padding: 14px 18px;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--ember);
+      color: #1b1207;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    button:hover { background: var(--ember-dark); }
+    button:active { transform: translateY(1px); }
+
+    .success {
+      display: none;
+      margin-top: 18px;
+      padding: 14px 16px;
+      border: 1px solid #2f6b4f;
+      background: rgba(47, 107, 79, 0.18);
+      border-radius: var(--radius);
+      color: #b8ecd1;
+    }
+
+    .success.show { display: block; }
+
+    @media (max-width: 520px) {
+      form { padding: 20px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Camp registration</h1>
+      <p>Fill in your details and your parent or guardian's contact so we can confirm your spot.</p>
+    </header>
+
+    <form id="regForm" novalidate>
+      <fieldset>
+        <legend>Your details</legend>
+        <div class="grid">
+          <div class="field full">
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g. Priya Sharma" autocomplete="name" required>
+            <span class="error"></span>
+          </div>
+
+          <div class="field full">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" autocomplete="tel" required>
+            <span class="error"></span>
+          </div>
+
+          <div class="field">
+            <label for="department">Department</label>
+            <select id="department" name="department" required>
+              <option value="" disabled selected>Select department</option>
+              <option value="BVoc SD">BVoc SD</option>
+              <option value="BCA">BCA</option>
+            </select>
+            <span class="error"></span>
+          </div>
+
+          <div class="field">
+            <label for="year">Year of study</label>
+            <select id="year" name="year" required>
+              <option value="" disabled selected>Select year</option>
+              <option value="1">1st year</option>
+              <option value="2">2nd year</option>
+              <option value="3">3rd year</option>
+            </select>
+            <span class="error"></span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Parent or guardian</legend>
+        <div class="grid">
+          <div class="field full">
+            <label for="parentName">Parent's name</label>
+            <input type="text" id="parentName" name="parentName" placeholder="e.g. Rajesh Sharma" required>
+            <span class="error"></span>
+          </div>
+
+          <div class="field full">
+            <label for="parentPhone">Parent's contact number</label>
+            <input type="tel" id="parentPhone" name="parentPhone" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required>
+            <span class="hint">We'll call this number only about the camp.</span>
+            <span class="error"></span>
+          </div>
+        </div>
+      </fieldset>
+
+      <button type="submit">Register for camp</button>
+      <div class="success" id="success" role="status">You're registered. We'll contact you with camp details soon.</div>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('regForm');
+    const success = document.getElementById('success');
+
+    const rules = {
+      fullName:    v => v.trim().length >= 2 ? '' : 'Enter your full name.',
+      phone:       v => /^[0-9]{10}$/.test(v) ? '' : 'Enter a 10-digit phone number.',
+      department:  v => v ? '' : 'Select your department.',
+      year:        v => v ? '' : 'Select your year of study.',
+      parentName:  v => v.trim().length >= 2 ? '' : "Enter your parent's name.",
+      parentPhone: v => /^[0-9]{10}$/.test(v) ? '' : "Enter a 10-digit contact number."
+    };
+
+    function check(input) {
+      const field = input.closest('.field');
+      const message = rules[input.id](input.value);
+      field.classList.toggle('invalid', Boolean(message));
+      field.querySelector('.error').textContent = message;
+      return !message;
+    }
+
+    // Allow digits only in phone fields
+    document.querySelectorAll('input[type="tel"]').forEach(el => {
+      el.addEventListener('input', () => { el.value = el.value.replace(/\D/g, ''); });
+    });
+
+    Object.keys(rules).forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('blur', () => check(el));
+      el.addEventListener('change', () => check(el));
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const allValid = Object.keys(rules)
+        .map(id => check(document.getElementById(id)))
+        .every(Boolean);
+
+      if (!allValid) {
+        success.classList.remove('show');
+        form.querySelector('.invalid input, .invalid select')?.focus();
+        return;
+      }
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      console.log('Registration data:', data); // Replace with a fetch() to your backend or Google Form/Sheet
+      success.classList.add('show');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
