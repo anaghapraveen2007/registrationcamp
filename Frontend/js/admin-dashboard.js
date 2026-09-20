@@ -1,4 +1,5 @@
-// Protect dashboard
+const API_URL = import.meta.env.VITE_API_URL;
+
 if (
     sessionStorage.getItem("adminLoggedIn") !== "true"
 ) {
@@ -7,38 +8,72 @@ if (
 
 }
 
+async function loadRegistrations() {
 
-// Temporary registration data
-const registrations = [
+    const token =
+        sessionStorage.getItem(
+            "adminToken"
+        );
 
-    {
-        fullName: "Rahul Kumar",
-        phone: "9876543210",
-        department: "BVoc SD",
-        year: "1st year",
-        parentName: "Rajesh Kumar",
-        parentPhone: "9876501234"
-    },
 
-    {
-        fullName: "Anjali S",
-        phone: "9123456780",
-        department: "BCA",
-        year: "2nd year",
-        parentName: "Suresh S",
-        parentPhone: "9123405678"
-    },
+    if (!token) {
 
-    {
-        fullName: "Arjun P",
-        phone: "9988776655",
-        department: "BVoc SD",
-        year: "1st year",
-        parentName: "Prakash P",
-        parentPhone: "9988700112"
+        window.location.href =
+            "login.html";
+
+        return;
+
     }
 
-];
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_URL}/api/registrations`,
+                {
+                    headers: {
+                        Authorization:
+                            `Bearer ${token}`,
+                    },
+                }
+            );
+
+
+        if (response.status === 401) {
+
+            sessionStorage.removeItem(
+                "adminToken"
+            );
+
+            window.location.href =
+                "login.html";
+
+            return;
+        }
+
+
+        const data =
+            await response.json();
+
+
+        displayRegistrations(
+            data.registrations
+        );
+
+
+        updateStatistics(
+            data.registrations
+        );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
 
 
 // Elements
